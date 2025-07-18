@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jobhub India</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+    header {
+      width: 100%;
+      min-height: 100vh;
+      background: url('https://images.unsplash.com/photo-1581090700227-1e8d92c7853f?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      box-shadow: inset 0 0 0 2000px rgba(0,0,0,0.4);
+    }
+    .branding {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      animation: logoFadeIn 1.2s ease-in-out;
+    }
+    @keyframes logoFadeIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .branding img {
+      width: 70px;
+      height: 70px;
+      filter: drop-shadow(0 2px 8px rgba(255,215,0,0.5));
+      animation: pulse 2s infinite ease-in-out;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    .branding span {
+      font-size: 38px;
+      font-weight: 700;
+      background: linear-gradient(to right, #FFD700, #FFA500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+    }
+    .tagline {
+      font-size: 18px;
+      color: #f1f1f1;
+      margin-top: 12px;
+      letter-spacing: 0.7px;
+    }
+    .features {
+      margin-top: 20px;
+      max-width: 500px;
+      font-size: 15px;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+    .header-button {
+      margin-top: 30px;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: #fff;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .header-button:hover {
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    .card {
+      background: #ffffff;
+      padding: 35px 30px;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 0.6s ease-in-out;
+      margin: 40px auto;
+      display: none;
+      color: #333;
+    }
+    .card.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h2 {
+      text-align: center;
+      color: #243b55;
+      margin-bottom: 20px;
+      font-size: 26px;
+      font-weight: 600;
+    }
+    input, button {
+      width: 100%;
+      padding: 14px 16px;
+      margin-top: 14px;
+      border-radius: 10px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    input:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 0 3px rgba(0,123,255,0.25);
+    }
+    button {
+      background: linear-gradient(to right, #007bff, #0056b3);
+      color: white;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+    }
+    .link {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 14px;
+    }
+    .link a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header id="mainHeader">
+  <div class="branding">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="premium logo">
+    <span>Jobhub India</span>
+  </div>
+  <div class="tagline">Empowering You to Earn from Anywhere</div>
+  <div class="features">
+    ✔ Work-from-home income<br>
+    ✔ Easy form-filling tasks<br>
+    ✔ Fast signup and secure dashboard access
+  </div>
+  <button class="header-button" onclick="startSignup()">Join Now</button>
+</header>
+
+<div id="signup" class="card">
+  <h2>Create Your Account</h2>
+  <input id="name" placeholder="Full Name" required />
+  <input id="address" placeholder="Address" required />
+  <input id="mobile" placeholder="Mobile Number" required />
+  <input id="referral" placeholder="Referral Code (Optional)" />
+  <input id="password" type="password" placeholder="Password" required />
+  <input id="confirm" type="password" placeholder="Confirm Password" required />
+  <button onclick="register()">Register</button>
+  <div class="link">Already registered? <a href="#" onclick="switchView('login')">Login</a></div>
+</div>
+
+<div id="login" class="card">
+  <h2>Welcome Back</h2>
+  <input id="loginMobile" placeholder="Mobile Number" />
+  <input id="loginPass" type="password" placeholder="Password" />
+  <button onclick="login()">Login</button>
+  <div class="link">New here? <a href="#" onclick="switchView('signup')">Create Account</a></div>
+</div>
+
+<div id="payment" class="card">
+  <h2>Activate Your Account</h2>
+  <p style="text-align:center; font-size:15px; margin-bottom:20px;">Securely scan the QR code to pay ₹29 and activate your account.</p>
+  <img id="paymentQR" src="https://i.postimg.cc/76jhT9rm/React-Native-snapshot-image8637672377804925583.png" alt="Payment QR Code" style="width:200px; height:200px; margin-bottom:20px; display:block;">
+</div>
+
+<div id="dashboard" class="card">
+  <h2>User Dashboard</h2>
+  <p style="text-align:center">Welcome, <span id="userName"></span>!</p>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<script>
+function startSignup() {
+  document.getElementById('mainHeader').style.display = 'none';
+  switchView('signup');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function switchView(view) {
+  document.querySelectorAll('.card').forEach(div => div.classList.remove('active'));
+  document.getElementById(view).classList.add('active');
+}
+
+function register() {
+  const name = document.getElementById('name').value;
+  const address = document.getElementById('address').value;
+  const mobile = document.getElementById('mobile').value;
+  const referral = document.getElementById('referral').value;
+  const password = document.getElementById('password').value;
+  const confirm = document.getElementById('confirm').value;
+
+  if (!name || !address || !mobile || !password || password !== confirm) {
+    alert("Please fill all fields correctly and make sure passwords match.");
+    return;
+  }
+
+  const user = { name, address, mobile, referral, password, paid: false };
+  localStorage.setItem(`user_${mobile}`, JSON.stringify(user));
+  sessionStorage.setItem('currentUser', mobile);
+
+  alert("Registration successful! Redirecting to login page...");
+  switchView('login');
+}
+
+function login() {
+  const mobile = document.getElementById('loginMobile').value;
+  const password = document.getElementById('loginPass').value;
+  const user = JSON.parse(localStorage.getItem(`user_${mobile}`));
+
+  if (user && user.password === password) {
+    sessionStorage.setItem('currentUser', mobile);
+    switchView('payment');
+  } else {
+    alert("Invalid login credentials. Please try again.");
+  }
+}
+
+function makePayment() {
+  document.getElementById('paymentQR').style.display = 'block'; // Show the QR code when triggered
+}
+
+function proceedToDashboard() {
+  const mobile = sessionStorage.getItem('currentUser');
+  const user = JSON.parse(localStorage.getItem(`user_${mobile}`));
+  user.paid = true;
+  localStorage.setItem(`user_${mobile}`, JSON.stringify(user));
+  document.getElementById('userName').innerText = user.name;
+  switchView('dashboard');
+}
+
+function logout() {
+  sessionStorage.removeItem('currentUser');
+  switchView('login');
+}
+</script>
+
+</body>
+</html>
